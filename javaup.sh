@@ -29,7 +29,7 @@ wget --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-
 
 # Unpack and install to correct location
 echo "##### Unpacking java"
-tar -zxvf jdk-8u45-linux-x64.tar.gz
+tar -zxf jdk-8u45-linux-x64.tar.gz
 
 echo "##### Moving java 8 to /usr/lib/jvm"
 mv -v jdk1.8.0_45 /usr/lib/jvm/
