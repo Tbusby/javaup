@@ -42,7 +42,7 @@ update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk1.8.0_45/bin/ja
 
 # Stop running apps 
 echo "##### Shutting down services"
-for SERVICE in $(ls -l /etc/init | grep "avst-app.*.debian" | awk '{print $9}' | sed 's/.conf//g'); do 
+for SERVICE in $(ls -l /etc/init | grep "avst-app.*.debian" | awk '{print $9}' | sed 's/.conf$//g'); do 
     echo Shutting down service = $SERVICE
     service $SERVICE stop 
 done
@@ -70,7 +70,7 @@ echo "##### Changing java settings in apps"
 # need to set bash to posix mode to disable shell expansion 
 set -o posix    
 
-for SERVICE in $(ls -l /etc/init | grep "avst-app.*.debian" | awk '{print $9}' | sed 's/.conf//g'); do 
+for SERVICE in $(ls -l /etc/init | grep "avst-app.*.debian" | awk '{print $9}' | sed 's/.conf$//g'); do 
     cd /opt/$SERVICE/
 
     # Start of java args replacements (Add to this as new ones are found)
@@ -84,7 +84,7 @@ done
     
 # Avst-app modify 
 echo "##### Avst-app modify"
-for SERVICE in $(ls -l /etc/init | grep "avst-app.*.debian" | awk '{print $9}' | sed 's/.conf//g'); do 
+for SERVICE in $(ls -l /etc/init | grep "avst-app.*.debian" | awk '{print $9}' | sed 's/.conf$//g'); do 
     echo Shutting down service = $SERVICE
     avst-app $SERVICE modify; 
 done
@@ -92,7 +92,7 @@ done
 
 # Restart apps 
 echo "##### Restart apps"
-for SERVICE in $(ls -l /etc/init | grep "avst-app.*.debian" | awk '{print $9}' | sed 's/.conf//g'); do 
+for SERVICE in $(ls -l /etc/init | grep "avst-app.*.debian" | awk '{print $9}' | sed 's/.conf$//g'); do 
     echo Restarting service = $SERVICE
     service $SERVICE start; 
 done
