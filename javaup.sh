@@ -1,6 +1,6 @@
 #!/bin/bash
 # 
-# Upgrade java from 7 to 8 
+# Upgrade java from 7 to 8 on the avst-app managed boxes 
 
 # Check if running as root
 if [[ $EUID -ne 0 ]]; then 
